@@ -47,27 +47,11 @@ function revisarLongitud(input) {
     }
 }
 
-//Busco el elemento
-let revisarTerminos = document.getElementById('terminos');
-
-//Agregar un evento
-revisarTerminos.addEventListener("change", verificarCheckbox);
-
-function verificarCheckbox() {
-    if (revisarTerminos.checked) {
-        revisarTerminos.className = "form-chceck-input is-valid"
-        return true;
-    } else {
-        revisarTerminos.className = "form-chceck-input is-invalid"
-        return false;
-    }
-}
-
 function validar() {
     event.preventDefault();//Previene su comportamiento por defecto
     console.log("dentro de la funcion validar")
 
-    if (revisar(document.getElementById('nombre')) && revisarMail(document.getElementById('email')) && revisarNumeros(document.getElementById('telefono')) && revisarLongitud(document.getElementById('consulta')) && verificarCheckbox()) {
+    if (revisar(document.getElementById('nombre')) && revisarMail(document.getElementById('email')) && revisarNumeros(document.getElementById('telefono')) && revisarLongitud(document.getElementById('consulta'))) {
         enviarMail();
     } else {
         alert("Envio fallido o ocurrio un error")
