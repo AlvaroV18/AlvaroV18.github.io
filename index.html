@@ -11,6 +11,12 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/2e2b7215f0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_Or3iGSwjRKK65tlgrsOa9");
+        })();
+    </script>
     <title>Alvaro Valenzuela</title>
 </head>
 
@@ -66,7 +72,14 @@
             <p><strong>Direccion:</strong> San miguel de Tucuman, Tucuman</p>
             <hr>
             <h3 class="text-primary">Sobre Mi</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic necessitatibus tempore corrupti doloremque a adipisci vero, sunt veniam accusamus eveniet impedit inventore! Repellat, sed. Fuga velit, deserunt dignissimos tempora obcaecati consequuntur, maiores dicta suscipit quod repudiandae, eaque ullam in molestiae omnis sunt quis. Suscipit, ipsam earum. Laboriosam eaque numquam, minima quo dicta adipisci. Quas enim commodi deserunt distinctio veniam earum! Deleniti minus rerum facilis assumenda quis voluptates explicabo animi, molestias dolorem illum minima quisquam nobis quasi asperiores beatae nostrum corporis. Tempore deleniti sit doloremque dicta magnam odit! Fugiat omnis soluta ratione ab quae quas libero consectetur, accusantium nulla excepturi ea.
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic necessitatibus tempore corrupti doloremque
+                a adipisci vero, sunt veniam accusamus eveniet impedit inventore! Repellat, sed. Fuga velit, deserunt
+                dignissimos tempora obcaecati consequuntur, maiores dicta suscipit quod repudiandae, eaque ullam in
+                molestiae omnis sunt quis. Suscipit, ipsam earum. Laboriosam eaque numquam, minima quo dicta adipisci.
+                Quas enim commodi deserunt distinctio veniam earum! Deleniti minus rerum facilis assumenda quis
+                voluptates explicabo animi, molestias dolorem illum minima quisquam nobis quasi asperiores beatae
+                nostrum corporis. Tempore deleniti sit doloremque dicta magnam odit! Fugiat omnis soluta ratione ab quae
+                quas libero consectetur, accusantium nulla excepturi ea.
             </p>
         </article>
         <h2 class="display-4 text-center my-4" id="educacion">Educacion</h2>
@@ -94,22 +107,37 @@
         <h2 class="display-4 text-center my-4" id="contacto">Contacto</h2>
         <hr>
         <article class="py-4">
-            <form>
+            <form onsubmit="validar(event)">
                 <div class="form-group">
                     <label>Nombre y Apellido</label>
-                    <input type="text" class="form-control" placeholder="Fernando Arias" required>
+                    <input type="text" class="form-control" placeholder="Fernando Arias" id="nombre"
+                        onblur="revisar(this)" required>
+                    <div class="invalid-feedback">
+                        Ingrese su nombre y apellido
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Correo Electronico</label>
-                    <input type="email" class="form-control" placeholder="fernandoarias777@correo.com" required>
+                    <input type="email" class="form-control" onblur="revisarMail(this)" id="email"
+                        placeholder="fernandoarias777@correo.com" required>
+                    <div class="invalid-feedback">
+                        Ingrese un Mail Valido
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Telefono</label>
-                    <input type="number" class="form-control" placeholder="+54 9 381 234 2342">
+                    <input type="number" class="form-control" id="telefono" onblur="revisar(this); revisarNumeros(this)" placeholder="+54 9 381 234 2342">
+                    <div class="invalid-feedback">
+                        Solo debe ingresar numeros
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Consulta</label>
-                    <textarea placeholder="Ingrese su consulta" class="form-control"></textarea>
+                    <textarea placeholder="Ingrese su consulta" class="form-control" id="consulta"
+                        onblur="revisarLongitud(this)"></textarea>
+                    <div class="invalid-feedback">
+                        Porfavor ingrese una consulta valida con almenos 10 caracteres
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
